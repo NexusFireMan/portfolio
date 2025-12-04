@@ -1,0 +1,330 @@
+/* ----------------------------------------------
+   RESET & BASE
+------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #06101d;
+    color: #d4f4dd;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* GLOW VERDE */
+:root {
+    --green: #00ff41;
+    --green-soft: #30ff6d;
+    --bg-dark: #06101d;
+    --bg-card: #0c1b2d;
+}
+
+/* ----------------------------------------------
+   NAVBAR
+------------------------------------------------*/
+nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(6,16,29,0.85);
+    backdrop-filter: blur(7px);
+    padding: 18px 40px;
+    border-bottom: 1px solid var(--green);
+    z-index: 999;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--green);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #9bd8ad;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--green);
+}
+
+/* ----------------------------------------------
+   SECCIÓN HERO - TERMINAL
+------------------------------------------------*/
+.hero {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.terminal-box {
+    width: 600px;
+    margin: 0 auto;
+    background: #0a1220;
+    border: 2px solid var(--green);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,255,65,0.4);
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #050a10;
+    border-bottom: 2px solid var(--green);
+}
+
+.terminal-header span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red    { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green  { background: #27c93f; }
+
+.terminal-title {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: #73ff95;
+}
+
+.terminal-body {
+    padding: 30px;
+    text-align: left;
+    color: #9affb5;
+}
+
+.cmd {
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.name {
+    font-size: 1.8rem;
+    color: var(--green);
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0,255,65,0.5);
+}
+
+/* Cursor parpadeante */
+.cursor {
+    width: 10px;
+    height: 18px;
+    background: var(--green);
+    display: inline-block;
+    margin-top: 10px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.btn-download {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 35px;
+    border: 1px solid var(--green);
+    border-radius: 6px;
+    color: var(--green);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-download:hover {
+    background: var(--green);
+    color: #000;
+    box-shadow: 0 0 12px #00ff41;
+}
+
+/* ----------------------------------------------
+   SECCIONES
+------------------------------------------------*/
+.section {
+    padding: 80px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--green);
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(0,255,65,0.5);
+}
+
+/* ----------------------------------------------
+   PERFIL PROFESIONAL (texto centrado)
+------------------------------------------------*/
+.perfil-text {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #b9f0c6;
+    font-size: 1.05rem;
+}
+
+/* ----------------------------------------------
+   TARJETAS ÁREAS DE EXPERTISE
+------------------------------------------------*/
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.skill-card {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #0d3f22;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 12px rgba(0,255,65,0.3);
+    transform: translateY(-4px);
+}
+
+.skill-card h3 {
+    color: var(--green);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.skill-list {
+    list-style: none;
+}
+
+.skill-list li {
+    margin-bottom: 8px;
+    color: #b9f0c6;
+}
+
+/* ----------------------------------------------
+   TIMELINE EXPERIENCIA
+------------------------------------------------*/
+.timeline {
+    border-left: 2px solid var(--green);
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--green);
+    position: absolute;
+    left: -29px;
+    top: 5px;
+    box-shadow: 0 0 8px var(--green);
+}
+
+.timeline-content {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #0d3f22;
+}
+
+.timeline-role {
+    color: var(--green);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.timeline-date {
+    color: #8ddca7;
+    margin-bottom: 10px;
+}
+
+.timeline-desc {
+    color: #c5f7d2;
+    font-size: 0.95rem;
+}
+
+/* ----------------------------------------------
+   CONTACTO
+------------------------------------------------*/
+.contact-text {
+    font-size: 1.1rem;
+    color: #cfffda;
+    margin-bottom: 25px;
+}
+
+.contact-field {
+    margin-bottom: 10px;
+    color: #b8f8cc;
+}
+
+.contact-field a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+/* ----------------------------------------------
+   FOOTER
+------------------------------------------------*/
+footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--green);
+    margin-top: 40px;
+}
+
+.footer-mail {
+    margin-top: 10px;
+    color: #208a45;
+}
+
+/* ----------------------------------------------
+   RESPONSIVE
+------------------------------------------------*/
+@media(max-width: 768px) {
+    .terminal-box {
+        width: 95%;
+    }
+}
