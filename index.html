@@ -21,401 +21,288 @@
 
     <!-- Estilos -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* --- RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
-            color: #e5e7eb;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+body {
+    font-family: "Inter", "Segoe UI", monospace;
+    background: #060b22;
+    color: #cdd5e0;
+    line-height: 1.6;
+}
 
-        /* Animaciones */
-        @keyframes slideInOneTab {
-            from {
-                transform: translateY(80px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+/* --- COLORES DEL TEMA --- */
+:root {
+    --neon: #00ff41;
+    --neon-glow: 0 0 20px rgba(0,255,65,0.6);
+    --bg-dark: #060b22;
+    --bg-panel: #0c1130;
+    --bg-card: #0f183c;
+    --border-neon: rgba(0,255,65,0.4);
+}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+/* --- NAV --- */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(6, 11, 34, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,255,65,0.2);
+    z-index: 1000;
+    padding: 18px 60px;
+}
 
-        /* Utilidades comunes */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .section {
-            padding: 60px 20px;
-        }
+.logo {
+    color: var(--neon);
+    font-size: 1.4rem;
+    font-family: monospace;
+}
 
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #00ff41;
-            text-align: center;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
 
-        /* Barra de navegación */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid #0d4d2d;
-            padding: 20px 40px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+.nav-links a {
+    color: #b9c2d0;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    position: relative;
+}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--neon);
+}
 
-        .logo {
-            font-family: 'Courier New', monospace;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #00ff41;
-            text-decoration: none;
-        }
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--neon);
+    bottom: -6px;
+    left: 0;
+    transition: width .3s;
+}
 
-        .nav-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+/* --- HERO --- */
+.hero {
+    padding-top: 180px;
+    padding-bottom: 130px;
+    display: flex;
+    justify-content: center;
+}
 
-        .nav-links a:hover {
-            color: #00ff41;
-        }
+.hero-content {
+    max-width: 1000px;
+    width: 90%;
+}
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #00ff41;
-            transition: width 0.3s ease;
-        }
+/* TERMINAL de presentación */
+.terminal-box {
+    background: #000;
+    border-radius: 12px;
+    border: 2px solid var(--neon);
+    box-shadow: 0 0 22px rgba(0,255,60,0.25);
+    padding-bottom: 25px;
+    overflow: hidden;
+}
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+.terminal-header {
+    background: #111;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--neon);
+}
 
-        /* Sección Hero */
-        .hero {
-            margin-top: 80px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0, 255, 65, 0.05) 0%, transparent 50%);
-        }
+.terminal-header span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
 
-        .hero-content {
-            animation: slideInOneTab 0.8s ease-out;
-        }
+.terminal-header .red { background: #ff5f56; }
+.terminal-header .yellow { background: #ffbd2e; }
+.terminal-header .green { background: #28c840; }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #00ff41;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-        }
+.terminal-body {
+    padding: 30px;
+    font-family: "Courier New", monospace;
+    font-size: 1.05rem;
+}
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #4ade80;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
+.terminal-body .cmd { color: #00b340; }
+.terminal-body .name {
+    font-size: 2.7rem;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+}
 
-        .hero-description {
-            font-size: 1.1rem;
-            color: #d1d5db;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
+/* Botón CV */
+.btn-download {
+    margin-top: 25px;
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+    border: 2px solid var(--neon);
+    color: var(--neon);
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: .3s;
+    font-size: 1rem;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            margin: 10px;
-            border: 2px solid #00ff41;
-            background: transparent;
-            color: #00ff41;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
+.btn-download:hover {
+    background: var(--neon);
+    color: #00110a;
+    box-shadow: var(--neon-glow);
+}
 
-        .btn:hover {
-            background-color: #00ff41;
-            color: #0a0e27;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
-        }
+/* --- TÍTULOS DE SECCIÓN --- */
+.section {
+    padding: 100px 0;
+}
 
-        .btn-primary {
-            background-color: #00ff41;
-            color: #0a0e27;
-        }
+.section-title {
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: var(--neon);
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: var(--neon-glow);
+}
 
-        .btn-primary:hover {
-            background-color: #4ade80;
-        }
+/* --- CARDS / ÁREAS DE EXPERTISE --- */
+.skills-grid {
+    display: grid;
+    gap: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
 
-        /* Secciones de contenido */
-        .profile-section {
-            background: rgba(26, 31, 58, 0.5);
-            border-top: 2px solid #0d4d2d;
-            border-bottom: 2px solid #0d4d2d;
-        }
+.skill-card {
+    background: linear-gradient(180deg, #132048 0%, #0b122f 100%);
+    border: 1px solid rgba(0,255,65,0.25);
+    border-radius: 12px;
+    padding: 25px;
+    transition: .25s;
+}
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
+.skill-card:hover {
+    border-color: var(--neon);
+    box-shadow: 0 0 18px rgba(0,255,60,0.25);
+    transform: translateY(-4px);
+}
 
-        .skill-card {
-            background: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(15, 23, 41, 0.8));
-            border: 1px solid #0d4d2d;
-            border-radius: 10px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            animation: fadeIn 0.6s ease-out;
-        }
+.skill-card h3 {
+    color: var(--neon);
+    font-size: 1.35rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-        .skill-card:hover {
-            border-color: #00ff41;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-            transform: translateY(-5px);
-        }
+.skill-list { list-style: none; }
+.skill-list li {
+    padding: 6px 0;
+    color: #d6e1ec;
+}
 
-        .skill-card h3 {
-            color: #4ade80;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* --- TIMELINE --- */
+.timeline {
+    border-left: 2px solid var(--neon);
+    margin-left: 20px;
+    padding-left: 50px;
+    position: relative;
+}
 
-        .skill-card i {
-            color: #00ff41;
-            font-size: 1.5rem;
-        }
+.timeline-item {
+    margin-bottom: 60px;
+    position: relative;
+}
 
-        .skill-list {
-            list-style: none;
-        }
+.timeline-item::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: var(--neon);
+    border-radius: 50%;
+    position: absolute;
+    left: -60px;
+    top: 4px;
+    border: 4px solid #060b22;
+    box-shadow: var(--neon-glow);
+}
 
-        .skill-list li {
-            padding: 8px 0;
-            color: #d1d5db;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.timeline-content {
+    background: linear-gradient(180deg, #132048 0%, #0b122f 100%);
+    border: 1px solid rgba(0,255,65,0.25);
+    border-radius: 10px;
+    padding: 25px;
+}
 
-        .skill-list li::before {
-            content: '▸';
-            color: #00ff41;
-            font-weight: bold;
-        }
+.timeline-role {
+    color: var(--neon);
+    font-weight: bold;
+}
 
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 40px 0;
-        }
+/* --- PROYECTOS DESTACADOS --- */
+.project-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background-color: #00ff41;
-        }
+.project-card {
+    background: linear-gradient(180deg, #142347 0%, #0b122f 100%);
+    border: 1px solid rgba(0,255,65,0.25);
+    padding: 30px;
+    border-radius: 12px;
+    transition: .3s;
+}
 
-        .timeline-item {
-            margin-bottom: 50px;
-            width: 50%;
-        }
+.project-card:hover {
+    border-color: var(--neon);
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0,255,60,0.2);
+}
 
-        .timeline-item:nth-child(odd) {
-            margin-left: 0;
-            text-align: right;
-            padding-right: 40px;
-        }
-
-        .timeline-item:nth-child(even) {
-            margin-left: 50%;
-            padding-left: 40px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 15px;
-            height: 15px;
-            background-color: #00ff41;
-            border: 4px solid #0a0e27;
-            border-radius: 50%;
-            margin-top: 5px;
-        }
-
-        .timeline-content {
-            background: rgba(26, 31, 58, 0.8);
-            border: 1px solid #0d4d2d;
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
-        }
-
-        .timeline-content h3 {
-            color: #00ff41;
-            margin-bottom: 10px;
-        }
-
-        .timeline-date {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .timeline-role {
-            color: #4ade80;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 15px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-item {
-                width: 100%;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                margin-left: 0;
-                width: 100%;
-                text-align: left;
-                padding-left: 40px;
-                padding-right: 0;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background-color: #000;
-            border-top: 2px solid #00ff41;
-            padding: 40px 20px;
-            text-align: center;
-            color: #d1d5db;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: #00ff41;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #4ade80;
-            transform: scale(1.2);
-        }
+/* --- FOOTER --- */
+footer {
+    padding: 50px 0;
+    text-align: center;
+    background: #000;
+    margin-top: 80px;
+    border-top: 2px solid var(--neon);
+}
     </style>
 </head>
 <body>
@@ -434,21 +321,42 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Javier Durán García</h1>
-            <p class="hero-subtitle">Especialista en Ciberseguridad</p>
-            <p class="hero-description">
-                Profesional con 15+ años de experiencia en IT, especializado en Pentesting, SIEM, 
-                análisis de vulnerabilidades y seguridad ofensiva. Combino conocimientos de sistemas, 
-                desarrollo y hacking ético para proteger infraestructuras críticas.
-            </p>
-            <div>
-                <a href="#contacto" class="btn">Descargar CV</a>
-                <a href="#experiencia" class="btn btn-primary">Conocer más</a>
-            </div>
+    <div class="hero-content">
+    <div class="terminal-box">
+        <div class="terminal-header">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+            <p style="color: var(--neon); margin-left: 10px;">root@kali:~#</p>
         </div>
-    </section>
+
+        <div class="terminal-body">
+            <p class="cmd">$ whoami</p>
+            <h1 class="name">Javier Durán García</h1>
+
+            <p class="cmd">$ cat role.txt</p>
+            <p>
+                Cybersecurity Specialist | Pentesting & Vulnerability Assessment |  
+                SIEM | OSINT | AI in Security | 15+ years IT
+            </p>
+
+            <br>
+
+            <p><i class="fa-solid fa-map-pin"></i> Location: España</p>
+            <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:nexusfireman@proton.me">nexusfireman@proton.me</a></p>
+            <p><i class="fa-brands fa-linkedin"></i> LinkedIn: 
+                <a href="https://linkedin.com/in/javierdurangarcia" target="_blank">
+                    linkedin.com/in/javierdurangarcia
+                </a>
+            </p>
+
+            <div class="cursor"></div>
+        </div>
+    </div>
+
+    <a href="CV_JavierDuran.pdf" class="btn-download" download>⬇ DESCARGAR_CV.pdf</a>
+</div>
+
 
     <!-- Perfil Profesional -->
     <section id="perfil" class="section profile-section">
