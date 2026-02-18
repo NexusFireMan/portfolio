@@ -72,6 +72,38 @@ nav {
     color: var(--green);
 }
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+}
+
+#lang-select {
+    background: #081527;
+    color: var(--green);
+    border: 1px solid #1b8f46;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+#lang-select:focus {
+    outline: 1px solid var(--green);
+    box-shadow: 0 0 8px rgba(0,255,65,0.3);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 /* ----------------------------------------------
    SECCIÓN HERO - TERMINAL
 ------------------------------------------------*/
@@ -92,6 +124,7 @@ nav {
     background: #0a1220;
     border: 2px solid var(--green);
     border-radius: 10px;
+    overflow: hidden;
     box-shadow: 0 0 15px rgba(0,255,65,0.4);
 }
 
@@ -102,6 +135,8 @@ nav {
     padding: 10px 15px;
     background: #050a10;
     border-bottom: 2px solid var(--green);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .terminal-header span {
@@ -324,6 +359,29 @@ footer {
    RESPONSIVE
 ------------------------------------------------*/
 @media(max-width: 768px) {
+    nav {
+        padding: 14px 16px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .nav-links {
+        width: 100%;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        white-space: nowrap;
+        scrollbar-width: thin;
+    }
+
+    .nav-controls {
+        align-self: flex-end;
+    }
+
     .terminal-box {
         width: 95%;
     }
@@ -351,6 +409,12 @@ footer {
     border-color: var(--green);
     box-shadow: 0 0 15px rgba(0,255,65,0.35);
     transform: translateY(-4px);
+}
+
+.projects-intro {
+    max-width: 850px;
+    margin: 0 auto 30px;
+    color: #b9f0c6;
 }
 
 .project-card h3 {
